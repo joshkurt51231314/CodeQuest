@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none"
+    tools:background="@drawable/bg_screen"
+    tools:layout_editor_absoluteX="-3dp"
+    tools:layout_editor_absoluteY="73dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="28dp"
+        tools:layout_editor_absoluteX="-6dp"
+        tools:layout_editor_absoluteY="76dp">
+
+        <TextView
+            android:id="@+id/tvProgress"
+            style="@style/PixelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="92dp"
+            android:text="Q 1/10"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvScore"
+            style="@style/PixelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="SCORE: 0000"
+            app:layout_constraintBaseline_toBaselineOf="@id/tvProgress"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Timer bar: drains over 10 seconds -->
+        <ProgressBar
+            android:id="@+id/timerBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:max="1000"
+            android:progress="1000"
+            android:progressDrawable="@drawable/bar_timer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvProgress" />
+
+        <LinearLayout
+            android:id="@+id/livesRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/timerBar">
+
+            <TextView
+                style="@style/PixelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LIVES: "
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="142dp" />
+
+            <View
+                android:id="@+id/life1"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@color/yellow"
+                tools:layout_editor_absoluteX="98dp"
+                tools:layout_editor_absoluteY="143dp" />
+
+            <View
+                android:id="@+id/life2"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@color/yellow"
+                tools:layout_editor_absoluteX="115dp"
+                tools:layout_editor_absoluteY="143dp" />
+
+            <View
+                android:id="@+id/life3"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:background="@color/yellow"
+                tools:layout_editor_absoluteX="133dp"
+                tools:layout_editor_absoluteY="143dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvTime"
+            style="@style/PixelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:text="TIME: 10"
+            app:layout_constraintBottom_toBottomOf="@id/livesRow"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/livesRow"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <!-- Question box -->
+        <TextView
+            android:id="@+id/tvQuestion"
+            style="@style/PixelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_panel"
+            android:gravity="center"
+            android:minHeight="130dp"
+            android:paddingStart="20dp"
+            android:paddingTop="20dp"
+            android:paddingEnd="25dp"
+            android:paddingBottom="25dp"
+            android:text="QUESTION TEXT GOES HERE?"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/livesRow" />
+
+        <!-- Four answers (their text and colors are set in QuizActivity.kt) -->
+        <LinearLayout
+            android:id="@+id/answersContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.451"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvQuestion"
+            app:layout_constraintWidth_percent="0.85">
+
+            <TextView
+                android:id="@+id/tvAnswer1"
+                style="@style/PixelText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_answer"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="17dp"
+                android:paddingBottom="17dp"
+                android:text="ANSWER 1"
+                tools:layout_editor_absoluteX="28dp"
+                tools:layout_editor_absoluteY="336dp" />
+
+            <TextView
+                android:id="@+id/tvAnswer2"
+                style="@style/PixelText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_answer"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="17dp"
+                android:paddingBottom="17dp"
+                android:text="ANSWER 2"
+                tools:layout_editor_absoluteX="28dp"
+                tools:layout_editor_absoluteY="396dp" />
+
+            <TextView
+                android:id="@+id/tvAnswer3"
+                style="@style/PixelText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_answer"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="17dp"
+                android:paddingBottom="17dp"
+                android:text="ANSWER 3"
+                tools:layout_editor_absoluteX="28dp"
+                tools:layout_editor_absoluteY="457dp" />
+
+            <TextView
+                android:id="@+id/tvAnswer4"
+                style="@style/PixelText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_answer"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingTop="14dp"
+                android:paddingEnd="17dp"
+                android:paddingBottom="17dp"
+                android:text="ANSWER 4"
+                tools:layout_editor_absoluteX="28dp"
+                tools:layout_editor_absoluteY="518dp" />
+        </LinearLayout>
+
+        <!-- Shown before answering -->
+
+        <TextView
+            android:id="@+id/btnHint"
+            style="@style/PixelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="HINT?"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/answersContainer" />
+
+        <!-- Shown after answering (tools:visibility makes them visible in the Design tab only) -->
+
+        <TextView
+            android:id="@+id/tvHintCost"
+            style="@style/PixelText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="HINT COSTS 25 POINTS"
+            android:textSize="8sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnHint" />
+
+        <TextView
+            android:id="@+id/tvFeedback"
+            style="@style/PixelText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="24dp"
+            android:gravity="center"
+            android:text="CORRECT! +100"
+            android:textColor="@color/yellow"
+            android:textSize="13sp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/answersContainer"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/noteBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_note"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvFeedback"
+            app:layout_constraintWidth_percent="0.9"
+            tools:visibility="visible">
+
+            <TextView
+                style="@style/PixelText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="WHY?"
+                android:textColor="@color/yellow"
+                android:textSize="12sp"
+                tools:layout_editor_absoluteX="178dp"
+                tools:layout_editor_absoluteY="624dp" />
+
+            <TextView
+                android:id="@+id/tvNoteText"
+                style="@style/PixelText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Explanation appears here."
+                android:textSize="10sp"
+                tools:layout_editor_absoluteX="32dp"
+                tools:layout_editor_absoluteY="647dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnNext"
+            style="@style/PixelButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="NEXT"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.485"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/noteBox"
+            app:layout_constraintWidth_percent="0.5"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base pixel text. The font file must exist: res/font/press_start_2p.ttf -->
+    <style name="PixelText">
+        <item name="android:fontFamily">@font/press_start_2p</item>
+        <item name="fontFamily">@font/press_start_2p</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <!-- Yellow button (it is a TextView, so it is easy to drag and resize) -->
+    <style name="PixelButton" parent="PixelText">
+        <item name="android:background">@drawable/bg_button_yellow</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingBottom">19dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <!-- Black button with a white frame -->
+    <style name="PixelButtonOutline" parent="PixelButton">
+        <item name="android:background">@drawable/bg_button_outline</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="PixelInput" parent="PixelText">
+        <item name="android:background">@drawable/bg_input</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">17dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">17dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:importantForAutofill">no</item>
+    </style>
+</resources>
